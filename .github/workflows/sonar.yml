@@ -23,7 +23,7 @@ jobs:
       - name: Run SonarQube Analysis
         run: |
           sonar-scanner \
-            -Dsonar.projectKey=Getdzidon_test-sonar \
-            -Dsonar.organization=getdzidon \
+            -Dsonar.projectKey=Getdzidon_github-actions-day4 \
+            -Dsonar.organization=donatus \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.token=${{ secrets.SONAR_TOKEN }}
