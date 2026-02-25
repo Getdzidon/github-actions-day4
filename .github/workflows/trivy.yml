@@ -31,10 +31,10 @@ jobs:
     - name: Scan Docker image for vulnerabilities with Trivy
       uses: aquasecurity/trivy-action@0.33.1
       with:
-        image: ${{ secrets.ECR_REPOSITORY_URI }}:latest
+        image-ref: ${{ secrets.ECR_REPOSITORY_URI }}:latest
         format: table
         severity: HIGH,CRITICAL
-        exit-code: 0  # Continue even if vulnerabilities are found
+        exit-code: 0
 
     - name: Push Docker image to Amazon ECR
       run: |
