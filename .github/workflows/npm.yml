@@ -14,11 +14,8 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Generate package.json file
-        run: npm init -y
-
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Run npm audit
-        run: npm audit --audit-level=low || exit 0 
+        run: npm audit --audit-level=low
