@@ -1,35 +1,35 @@
-name: SonarQube Scan
+# name: SonarQube Scan
 
-on: 
-  - push 
-  - pull_request
+# on: 
+#   - push 
+#   - pull_request
 
-jobs:
-  sonar:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
+# jobs:
+#   sonar:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v6
       
-      - name: Install dependencies
-        run: |
-          yarn install --ignore-scripts
-          # for yarn 2.x and later
-          YARN_ENABLE_SCRIPTS=false yarn install
+#       - name: Install dependencies
+#         run: |
+#           yarn install --ignore-scripts
+#           # for yarn 2.x and later
+#           YARN_ENABLE_SCRIPTS=false yarn install
 
-      - name: Set up JDK
-        uses: actions/setup-java@v5
-        with:
-          distribution: 'temurin'
-          java-version: '25'
+#       - name: Set up JDK
+#         uses: actions/setup-java@v5
+#         with:
+#           distribution: 'temurin'
+#           java-version: '25'
 
-      - name: Install Sonar Scanner
-        run: npm install -g sonarqube-scanner
+#       - name: Install Sonar Scanner
+#         run: npm install -g sonarqube-scanner
 
-      - name: Run SonarQube Analysis
-        run: |
-          sonar-scanner \
-            -Dsonar.projectKey=Getdzidon_github-actions-day4 \
-            -Dsonar.organization=donatus \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
+#       - name: Run SonarQube Analysis
+#         run: |
+#           sonar-scanner \
+#             -Dsonar.projectKey=Getdzidon_github-actions-day4 \
+#             -Dsonar.organization=donatus \
+#             -Dsonar.host.url=https://sonarcloud.io \
+#             -Dsonar.token=${{ secrets.SONAR_TOKEN }}
