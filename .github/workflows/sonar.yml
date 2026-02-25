@@ -10,6 +10,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+      
+      - name: Install dependencies
+        run: |
+          yarn install --ignore-scripts
+          # for yarn 2.x and later
+          YARN_ENABLE_SCRIPTS=false yarn install
 
       - name: Set up JDK
         uses: actions/setup-java@v5
