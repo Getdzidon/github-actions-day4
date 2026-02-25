@@ -28,18 +28,13 @@ jobs:
       run: |
         docker build -t ${{ secrets.ECR_REPOSITORY_URI }}:latest .
 
-     # integrate trivy action to scan the docker image for vulnerabilities
     - name: Scan Docker image for vulnerabilities with Trivy
       uses: aquasecurity/trivy-action@0.33.1
       with:
         image: ${{ secrets.ECR_REPOSITORY_URI }}:latest
         format: table
         severity: HIGH,CRITICAL
-        exit-code: 0  # Fail the job if vulnerabilities are found
-
-    - name: Tag Docker image
-      run: |
-        docker tag ${{ secrets.ECR_REPOSITORY_URI }}:latest ${{ secrets.ECR_REPOSITORY_URI }}:latest
+        exit-code: 0  # Continue even if vulnerabilities are found
 
     - name: Push Docker image to Amazon ECR
       run: |
